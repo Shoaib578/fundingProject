@@ -1,0 +1,27 @@
+{%  extends 'layouts/main_layout.html' %}
+
+
+
+{% block body %}
+
+
+<form method="post" action="{{ url_for('main.AddFund') }}" class="p-4">
+
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Fund Name</label>
+    <input type="text"  class="form-control" name="fund_name" id="exampleFormControlInput1" placeholder="Fund Name">
+</div>
+
+
+<div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Fund Description</label>
+    <textarea class="form-control" name="fund_description" id="exampleFormControlTextarea1" placeholder="Fund Description" rows="3"></textarea>
+  </div>
+
+
+
+
+<button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
+  
+{% endblock %}

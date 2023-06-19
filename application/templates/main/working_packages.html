@@ -1,0 +1,66 @@
+{% extends 'layouts/main_layout.html' %}
+
+
+
+
+{% block body %}
+
+
+<div style="padding: 20px;">
+
+<button type="button" class="btn btn-primary " style="float: right;" data-bs-toggle="modal" data-bs-target="#exampleModal">Add working package+</button>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Package Name</th>
+        <th scope="col">Package Parent</th>
+       
+        <th scope="col"></th>
+       
+      </tr>
+    </thead>
+    <tbody>
+    {% for package in working_packages %}
+      <tr>
+        <th scope="row">{{package.package_name}}</th>
+        <th scope="row">{{package.package_parent}}</th>
+       
+        <td><a href="#" class="btn btn-primary" >View</a></td>
+
+        
+      </tr>
+    {% endfor %}
+   
+    </tbody>
+  </table>
+</div>
+
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Working Package</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{{url_for('main.ModuleWorkingPackages',module_id=module_id)}}" method="POST">
+
+        <input class="form-control" name="package_name" placeholder="Package Name"/>
+        
+        <input class="form-control mt-3" name="package_parent" placeholder="Package Parent"/>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
