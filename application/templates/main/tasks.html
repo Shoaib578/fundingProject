@@ -28,7 +28,7 @@
         <th scope="row">{{task.task_name}}</th>
         <th scope="row">{{task.task_description}}</th>
 
-        <th scope="row">{{task.created_date}}</th>
+        <th scope="row">{{task.created_date.strftime('%Y/%m/%d')}}</th>
        
         <th scope="row">{{task.due_date}}</th>
         <td><a href="#" class="btn btn-primary" >View</a></td>
@@ -54,7 +54,10 @@
         <form action="{{url_for('main.WorkingPackageTasks',package_id=package_id)}}" method="POST">
 
         <input class="form-control" name="task_name" placeholder="Task Name"/>
+        <br />
         <textarea class="form-control" placeholder="Task Description" name="task_description"></textarea>
+        <br />
+
         <input type="date" name="task_due_date" class="form-control">
       </div>
       <div class="modal-footer">

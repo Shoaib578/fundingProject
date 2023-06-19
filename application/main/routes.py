@@ -6,7 +6,7 @@ from application.models.fund import Fund
 from application.models.module import Module
 from application.models.task import Task
 from application.models.working_package import WorkingPackage
-
+from datetime import datetime
 main  = Blueprint('main', __name__)
 
 @main.route('/')
@@ -53,9 +53,9 @@ def ModuleWorkingPackages(module_id):
     working_packages = WorkingPackage.query.filter_by(module_id=module_id).all()
     if request.method == 'POST':
         package_name = request.form.get('package_name')
-        package_parent = request.form.get('package_parent')
+       
 
-        new_working_package = WorkingPackage(package_name=package_name, module_id=module_id,package_parent=package_parent)
+        new_working_package = WorkingPackage(package_name=package_name, module_id=module_id)
         db.session.add(new_working_package)
         db.session.commit()
         flash("Working Package added successfully")
@@ -77,7 +77,7 @@ def WorkingPackageTasks(package_id):
         return redirect(url_for('main.WorkingPackageTasks',package_id=package_id))
     
     
-    return render_template('main/working_packages.html',page_name="Tasks",package_id=package_id,tasks=tasks)
+    return render_template('main/tasks.html',page_name="Tasks",package_id=package_id,tasks=tasks)
 
 @main.route('/logout')
 def Logout():

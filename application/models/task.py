@@ -7,4 +7,4 @@ class Task(db.Model):
     task_name = db.Column(db.String(200))
     task_description = db.Column(db.Text)
     created_date = db.Column(db.DateTime, default=datetime.utcnow,nullable=False)
-    due_date = db.Column(db.DateTime, nullable=True)
+    due_date = db.Column(db.String(30), nullable=True)

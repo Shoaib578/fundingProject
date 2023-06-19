@@ -13,8 +13,9 @@
     <thead>
       <tr>
         <th scope="col">Package Name</th>
-        <th scope="col">Package Parent</th>
        
+       
+        <th scope="col"></th>
         <th scope="col"></th>
        
       </tr>
@@ -23,10 +24,11 @@
     {% for package in working_packages %}
       <tr>
         <th scope="row">{{package.package_name}}</th>
-        <th scope="row">{{package.package_parent}}</th>
+      
        
-        <td><a href="#" class="btn btn-primary" >View</a></td>
+        <td><a href="{{ url_for('main.WorkingPackageTasks',package_id=package.package_id) }}" class="btn btn-primary" >Tasks</a></td>
 
+        <td><a href="#" class="btn btn-primary" >Sub working packages</a></td>
         
       </tr>
     {% endfor %}
@@ -48,8 +50,7 @@
         <form action="{{url_for('main.ModuleWorkingPackages',module_id=module_id)}}" method="POST">
 
         <input class="form-control" name="package_name" placeholder="Package Name"/>
-        
-        <input class="form-control mt-3" name="package_parent" placeholder="Package Parent"/>
+       
 
       </div>
       <div class="modal-footer">
